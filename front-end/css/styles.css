@@ -1,0 +1,14 @@
+.imgCard {
+    padding: 2% 5%;
+}
+
+.errorMsg {
+    text-align: center;
+    /* padding: 2% 5%; */
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.error {
+    opacity: 0;
+}
