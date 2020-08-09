@@ -1,15 +1,11 @@
-/*jshint esversion: 6 */ 
+/*jshint esversion: 6 */
 $(document).ready(function () {
     $('.close').click(function () {
+        // $('.errorMsg').html('check click');
         $('.error').css({ 'opacity': '0' }).removeClass("fade show");
-        displayError = false;
     });
     $('#uploadButton').click(function () {
-        if (displayError == true) {
-            $('.error').css({ 'opacity': '0' }).removeClass("fade show");
-            displayError == false;
-        }
-
+        // Import files
         var form_data = importFiles();
         if (form_data) {
             $.ajax({
@@ -28,20 +24,19 @@ $(document).ready(function () {
                         var curImg = Object.values(response)[i];
                         var imgNo = "Image " + String(i + 1);
                         // display prediction messages
-                        
                         var newCard = `<div class="card mb-3" style="max-width: 1000px;"><div class="row no-gutters"><div class="col-md-7"><img src="${'http://localhost:5000/getImg/' + curImg.imgName}" class="card-img"></div><div class="col-md-5"><div class="card-body"><h5 class="card-title">${imgNo}</h5><p class="card-text">${curImg.prediction}.</p></div></div></div></div>`;
                         $(".imgCard").append(newCard);
                     }
                 }, error: function (response) {
-                    // console.log(response.name);
-                    $('.errorMsg').html(response.message);
-                    $('.error').css({ 'opacity': '1' }).addClass("fade show");
-                    displayError = true;
+                    console.log(response.name);
+                    // newAlert(response.message);
+                    // $('.errorMsg').html();
                 }
             });
         }
     });
 });
+// --------------------------------------------------
 var displayError = false;
 var ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif'];
 function checkExtension(fileName) {
@@ -53,25 +48,43 @@ function importFiles() {
     var fileList = $('#inputImg')[0].files.length;
     // Check if no file was selected
     if (fileList == 0) {
-        $('.errorMsg').html('ERROR! Please select at least one image');
-        $('.error').css({ 'opacity': '1' }).addClass("fade show");
-        displayError = true;
+        newAlert('ERROR! Please select at least one image');
         return;
     }
     // Check for invalid file extensions
     for (i = 0; i < fileList; i++) {
         var curFile = $('#inputImg')[0].files[i].name;
         if (checkExtension(curFile) == false) {
-            $('.errorMsg').html('ERROR! Please select files in image formats (png, jpg, jpeg, gif)');
-            $('.error').css({ 'opacity': '1' }).addClass("fade show");
-            displayError = true;
+            newAlert('ERROR! Please select files in image formats (png, jpg, jpeg, gif)');
             return;
         }
     }
+    // var fileSize = 0;
     // Add images to form data
     for (i = 0; i < fileList; i++) {
         // key = 'image' + String(i);
         form_data.append('image', $('#inputImg')[0].files[i]);
+        // fileSize = fileSize + $('#inputImg')[0].files[i].size;
     }
+    // console.log(fileSize);
+    // if (fileSize > 16384) {
+    //     newAlert();
+    //     $('.errorMsg').html('ERROR (Maximum 16MB is allowed)');
+    //     return;
+    // }
     return form_data;
+}
+
+function newAlert(errorMsg) {
+    var newAlert = `<div class="alert alert-danger alert-dismissible error" role="alert">
+                    <p class="errorMsg">${errorMsg}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button></div>`;
+
+    if ($('.error-row').children().length === 0) {
+        $(".error-row").append(newAlert);        
+    } else {
+        $('.errorMsg').html(errorMsg);
+        $('.error').css({ 'opacity': '1' }).addClass("fade show");
+    }
 }
