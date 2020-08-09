@@ -31,7 +31,7 @@ More details on MXNET models can be found [here](https://gluon-cv.mxnet.io/build
   ```
   python server.py
   ```
-* index.js & styles.sss is run with [http.server](https://docs.python.org/3/library/http.server.html).
+* index.js & styles.css is run with [http.server](https://docs.python.org/3/library/http.server.html).
   ```
   python -m http.server 8000
   ```
