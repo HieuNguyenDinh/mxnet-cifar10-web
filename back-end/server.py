@@ -24,7 +24,7 @@ def allowed_file(filename):
 @app.route('/')
 @cross_origin(supports_credentials=True)
 def index():
-    return jsonify({'msg': 'hello'})
+    return 'Hello'
 
 # POST API for processing uploaded images
 @app.route('/process',  methods=['POST'])
@@ -33,12 +33,11 @@ def predict():
         resp = jsonify({'message' : 'No file part in the request'})
         resp.status_code = 400
         return resp
-
+    
     # Init response 
     resp = {}
     # get list of all uploaded files
-    files = request.files.getlist('image')
-
+    files = request.files.getlist('image')    
     for i in range(len(files)):
         # get file name
         fileName = secure_filename(files[i].filename)
@@ -48,6 +47,7 @@ def predict():
         files[i].save(fileDir)
         # predict
         res = mxnet_cifar10(fileDir)
+
         # add results to response
         resp[f'image${i}'] = {'imgName': fileName, 'prediction': res}
     return jsonify(resp)

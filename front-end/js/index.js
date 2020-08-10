@@ -1,10 +1,6 @@
 /*jshint esversion: 6 */
 $(document).ready(function () {
-    $('.close').click(function () {
-        // $('.errorMsg').html('check click');
-        $('.error').css({ 'opacity': '0' }).removeClass("fade show");
-    });
-    $('#uploadButton').click(function () {
+    $('#uploadButton').click(() => {
         // Import files
         var form_data = importFiles();
         if (form_data) {
@@ -23,8 +19,14 @@ $(document).ready(function () {
                     for (var i = 0; i < resLen; i++) {
                         var curImg = Object.values(response)[i];
                         var imgNo = "Image " + String(i + 1);
+                        var predictMsg = `This picture is classified as ${curImg.prediction[0]}, with probability ${curImg.prediction[1]}`;
                         // display prediction messages
-                        var newCard = `<div class="card mb-3" style="max-width: 1000px;"><div class="row no-gutters"><div class="col-md-7"><img src="${'http://localhost:5000/getImg/' + curImg.imgName}" class="card-img"></div><div class="col-md-5"><div class="card-body"><h5 class="card-title">${imgNo}</h5><p class="card-text">${curImg.prediction}.</p></div></div></div></div>`;
+                        var newCard = `<div class="card mb-3" style="max-width: 1000px;">
+                                        <div class="row no-gutters"><div class="col-md-7">
+                                        <img src="${'http://localhost:5000/getImg/' + curImg.imgName}" class="card-img"></div>
+                                        <div class="col-md-5"><div class="card-body">
+                                        <h5 class="card-title">${imgNo}</h5>
+                                        <p class="card-text">${predictMsg}.</p></div></div></div></div>`;
                         $(".imgCard").append(newCard);
                     }
                 }, error: function (response) {
@@ -44,6 +46,10 @@ function checkExtension(fileName) {
     return (ALLOWED_EXTENSIONS.includes(ext) ? true : false);
 }
 function importFiles() {
+    // Remove previous error message
+    if ($('.error-row').children().length > 0) {
+        $('.error').remove();
+    }
     var form_data = new FormData();
     var fileList = $('#inputImg')[0].files.length;
     // Check if no file was selected
@@ -65,7 +71,9 @@ function importFiles() {
         // key = 'image' + String(i);
         form_data.append('image', $('#inputImg')[0].files[i]);
         // fileSize = fileSize + $('#inputImg')[0].files[i].size;
+        
     }
+    console.log(form_data)
     // console.log(fileSize);
     // if (fileSize > 16384) {
     //     newAlert();
@@ -85,6 +93,6 @@ function newAlert(errorMsg) {
         $(".error-row").append(newAlert);        
     } else {
         $('.errorMsg').html(errorMsg);
-        $('.error').css({ 'opacity': '1' }).addClass("fade show");
+        // $('.error').css({'display':'inline'});
     }
 }
