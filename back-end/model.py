@@ -5,15 +5,13 @@ from mxnet.gluon.data.vision import transforms
 from gluoncv import utils
 from gluoncv.model_zoo import get_model
 
+# take image directory as "im"
 def mxnet_cifar10(im):
-    #  download test image
-    # url = 'https://raw.githubusercontent.com/dmlc/web-data/master/gluoncv/classification/plane-draw.jpeg'
-    # im_fname = utils.download(url)
 
     img = image.imread(im)
 
-        # plt.imshow(img.asnumpy())
-        # plt.show()
+    # plt.imshow(img.asnumpy())
+    # plt.show()
 
     # transform image
     transform_fn = transforms.Compose([
@@ -36,6 +34,4 @@ def mxnet_cifar10(im):
     class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer',
                 'dog', 'frog', 'horse', 'ship', 'truck']
     ind = nd.argmax(pred, axis=1).astype('int')
-    # print('The input picture is classified as [%s], with probability %.3f.'%
-    #     (class_names[ind.asscalar()], nd.softmax(pred)[0][ind].asscalar()))
-    return ('This picture is classified as '+ str(class_names[ind.asscalar()]) + ', with probability ' + str(round(nd.softmax(pred)[0][ind].asscalar(), 2)))
+    return [str(class_names[ind.asscalar()]), str(round(nd.softmax(pred)[0][ind].asscalar(), 2))]    
