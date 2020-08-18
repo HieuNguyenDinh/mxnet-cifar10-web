@@ -5,7 +5,7 @@ $(document).ready(function () {
         var form_data = importFiles();
         if (form_data) {
             $.ajax({
-                url: 'http://localhost:5000/process', // Point to server
+                url: '/process', // Point to server
                 type: 'POST',
                 data: form_data,
                 contentType: false,
@@ -73,7 +73,7 @@ function importFiles() {
         // fileSize = fileSize + $('#inputImg')[0].files[i].size;
         
     }
-    console.log(form_data)
+    // console.log(form_data)
     // console.log(fileSize);
     // if (fileSize > 16384) {
     //     newAlert();
