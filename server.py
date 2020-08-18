@@ -24,7 +24,7 @@ def allowed_file(filename):
 @app.route('/')
 @cross_origin(supports_credentials=True)
 def index():
-    return 'Hello'
+    return render_template('index.html')
 
 # POST API for processing uploaded images
 @app.route('/process',  methods=['POST'])
