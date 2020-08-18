@@ -1,4 +1,3 @@
-attrs==19.3.0
 autopep8 @ file:///home/conda/feedstock_root/build_artifacts/autopep8_1596345643597/work
 brotlipy==0.7.0
 certifi==2020.6.20
