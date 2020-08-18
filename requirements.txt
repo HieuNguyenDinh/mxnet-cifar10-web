@@ -11,6 +11,7 @@ Flask==1.1.2
 Flask-Cors==3.0.8
 gluoncv==0.7.0
 graphviz==0.8.4
+gunicorn==20.0.4
 idna @ file:///tmp/build/80754af9/idna_1593446292537/work
 importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1593446433964/work
 iniconfig @ file:///tmp/build/80754af9/iniconfig_1596827328212/work
