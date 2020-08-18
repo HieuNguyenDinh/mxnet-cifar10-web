@@ -23,7 +23,7 @@ $(document).ready(function () {
                         // display prediction messages
                         var newCard = `<div class="card mb-3" style="max-width: 1000px;">
                                         <div class="row no-gutters"><div class="col-md-7">
-                                        <img src="${'http://localhost:5000/getImg/' + curImg.imgName}" class="card-img"></div>
+                                        <img src="${`${location.hostname}/getImg/` + curImg.imgName}" class="card-img"></div>
                                         <div class="col-md-5"><div class="card-body">
                                         <h5 class="card-title">${imgNo}</h5>
                                         <p class="card-text">${predictMsg}.</p></div></div></div></div>`;
