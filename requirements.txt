@@ -1,0 +1,46 @@
+attrs==19.3.0
+autopep8 @ file:///home/conda/feedstock_root/build_artifacts/autopep8_1596345643597/work
+brotlipy==0.7.0
+certifi==2020.6.20
+cffi @ file:///tmp/build/80754af9/cffi_1596809862272/work
+chardet==3.0.4
+click==7.1.2
+cryptography==2.9.2
+cycler==0.10.0
+Flask==1.1.2
+Flask-Cors==3.0.8
+gluoncv==0.7.0
+graphviz==0.8.4
+idna @ file:///tmp/build/80754af9/idna_1593446292537/work
+importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1593446433964/work
+iniconfig @ file:///tmp/build/80754af9/iniconfig_1596827328212/work
+itsdangerous==1.1.0
+Jinja2==2.11.2
+kiwisolver==1.2.0
+MarkupSafe==1.1.1
+matplotlib==3.3.0
+more-itertools==8.4.0
+mxnet==1.6.0
+numpy==1.19.1
+packaging==20.4
+pep8==1.7.1
+Pillow==7.2.0
+pluggy==0.13.1
+portalocker==2.0.0
+py @ file:///tmp/build/80754af9/py_1593446248552/work
+pycodestyle @ file:///home/conda/feedstock_root/build_artifacts/pycodestyle_1589305246696/work
+pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1594392929924/work
+pyparsing==2.4.7
+PySocks==1.7.1
+pytest==6.0.1
+pytest-flask==1.0.0
+python-dateutil==2.8.1
+requests @ file:///tmp/build/80754af9/requests_1592841827918/work
+scipy==1.5.2
+six==1.15.0
+toml @ file:///home/conda/feedstock_root/build_artifacts/toml_1589469402899/work
+tqdm==4.48.1
+urllib3==1.25.10
+Werkzeug==1.0.1
+zipp==3.1.0

@@ -1,1 +1,1 @@
-web: gunicorn app:mxnet-cifar10
+web: gunicorn app:server
