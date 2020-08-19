@@ -8,11 +8,11 @@ from werkzeug.utils import secure_filename
 from model import mxnet_cifar10
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-UPLOAD_FOLDER = os.getcwd() + '/images/'
+UPLOAD_FOLDER = '/images/'
 HOSTNAME = os.environ.get('HOSTNAME') or '127.0.0.1'
 PORT = int(os.environ.get('PORT') or 5000)
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='/')
 CORS(app, support_credentials=True)
 
 # Maximum 16MB file
