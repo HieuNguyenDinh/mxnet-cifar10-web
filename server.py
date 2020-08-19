@@ -12,7 +12,7 @@ UPLOAD_FOLDER = '/images/'
 HOSTNAME = os.environ.get('HOSTNAME') or '127.0.0.1'
 PORT = int(os.environ.get('PORT') or 5000)
 
-app = Flask(__name__, template_folder='/')
+app = Flask(__name__)
 CORS(app, support_credentials=True)
 
 # Maximum 16MB file
