@@ -14,13 +14,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Favicon error -->
-    <link rel="shortcut icon" href="">
+    <!-- <link rel="shortcut icon" href=""> -->
+    <script>
+        $('head').append(`<link rel="stylesheet" type="text/css" href="${window.location}stastic/css/styles.css">`);
+        $('head').append(`<script type="text/javascript" src="${window.location}stastic/js/index.js">%3C/script>`); 
+    </script>
 </head>
-<script>
-    $('head').append(`<link rel="stylesheet" type="text/css" href="${window.location}stastic/css/styles.css">`);
-    $('body').append(`<script type="text/javascript" src="${window.location}stastic/js/index.js"></script>`);
-</script>
+
 <body>
+
     <h1></h1>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
