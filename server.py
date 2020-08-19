@@ -10,7 +10,7 @@ from model import mxnet_cifar10
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 UPLOAD_FOLDER = '/images/'
 HOSTNAME = os.environ.get('HOSTNAME') or '127.0.0.1'
-PORT = int(os.environ.get('PORT') or 5000)
+PORT = int(os.environ.get('PORT') or 5500)
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
